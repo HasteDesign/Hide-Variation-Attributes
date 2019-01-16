@@ -45,7 +45,8 @@ if( ! class_exists( 'Hide_Variation_Attributes' ) ) {
 		*/
 	   function __construct() {
 		   $this->plugin_dir = plugin_dir_path( __FILE__ );
-		   add_action( 'init', array( $this, 'load_textdomain' ) );
+			add_action( 'init', array( $this, 'load_textdomain' ) );
+			add_action( 'init', array( $this, 'includes' ), 0 );
 	   }
 
 	   /**
@@ -107,7 +108,7 @@ if( ! class_exists( 'Hide_Variation_Attributes' ) ) {
 		   $path = 'includes/classes';
 
 		   include_once( $this->plugin_dir . "/$path/$file" );
-	   }
+		}
 
 	   /**
 		* Load plugin translation
