@@ -1,14 +1,10 @@
 const hideAttribute = element => {
     let options = element.querySelectorAll( 'option' );
 
-    console.log( options.length );
-
     if ( options.length == 1 || options.length == 2 ) {
         if ( includesNonApplicable( options ) ) {
-            console.log( element );
             element.style.display = 'none';
         } else {
-
             element.style.display = 'inline-block';
         }
     }
@@ -32,7 +28,9 @@ const attributeValueIsNonApplicable = attribute => {
     return false;
 }
 
-jQuery( document  ).on( 'check_variations', function(e){
+jQuery( document  ).on( 'change.wc-variation-form', function(e){
+    jQuery( 'table.variations td.value select' ).css( {'display':'inline-block'} );
+
     /**
      * For each variation select, hide the select if variation has only
      * the non-applicable attribute option.
@@ -42,8 +40,4 @@ jQuery( document  ).on( 'check_variations', function(e){
 
     
     selects.forEach( hideAttribute );
-});
-
-jQuery( document ).on( 'change.wc-variation-form', function(e) {
-    jQuery( 'table.variations td.value select' ).css( {'display':'inline-block'} );
 });
